@@ -1,0 +1,46 @@
+{
+  "manifest_version": 3,
+  "name": "Browser Perception Engine",
+  "version": "1.0.0",
+  "description": "Real-time browser perception and control plane for AI-driven automation",
+  
+  "permissions": [
+    "activeTab",
+    "scripting",
+    "storage",
+    "tabs"
+  ],
+  
+  "host_permissions": [
+    "<all_urls>"
+  ],
+  
+  "background": {
+    "service_worker": "dist/background/service-worker.js",
+    "type": "module"
+  },
+  
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["dist/content/index.js"],
+      "run_at": "document_idle",
+      "all_frames": true
+    }
+  ],
+  
+  "devtools_page": "devtools/devtools.html",
+  
+  "web_accessible_resources": [
+    {
+      "resources": ["devtools/*"],
+      "matches": ["<all_urls>"]
+    }
+  ],
+  
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  }
+}

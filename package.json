@@ -1,0 +1,21 @@
+{
+    "name": "browser-perception-system",
+    "version": "1.0.0",
+    "description": "Browser Perception & Control Plane - Real-time browser automation",
+    "private": true,
+    "workspaces": [
+        "extension",
+        "backend",
+        "repl-bridge"
+    ],
+    "scripts": {
+        "install:all": "cd extension && npm install && cd ../backend && npm install && cd ../repl-bridge && npm install",
+        "build:ext": "cd extension && npm run build",
+        "start:backend": "cd backend && npm run dev",
+        "start:cli": "cd repl-bridge && npm run dev",
+        "dev": "concurrently \"npm run start:backend\" \"npm run start:cli\""
+    },
+    "devDependencies": {
+        "concurrently": "^8.2.0"
+    }
+}
